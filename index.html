@@ -1,0 +1,61 @@
+<!DOCTYPE>
+<html ng-app="aqi">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+	<link rel="icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
+    <title>路齐菲罗空气站</title>
+    <style>
+        .myft {
+            font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
+        }
+    </style>
+	<script src="/js/angular.min.js"></script>
+	<script src="/js/ui-bootstrap.min.js"></script>
+	<script src="/js/controller.js"></script>
+</head>
+<body class="myft">
+	<h2 class="text-center"><strong>路齐菲罗空气站</strong></h2>
+	<h5 class="text-center">我在这里呼吸着，你呢？</h5>
+	<hr>
+	<div class="col-md-12" ng-controller="AqiCtrl">
+		<div class="input-group">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-search"></span>	
+			</span>
+			<input type="text" class="form-control" placeholder="请输入关键词搜索……" ng-model="search">
+		</div>
+		<br>
+		<alert ng-repeat="aqi in aqis | filter: search" type="{{aqiLevel(aqi.aqi)}}" close="closeAqi($index)">
+			<h1><strong>{{aqi.position_name}}</strong></h1>
+			<h3><strong>{{aqi.aqi}}&nbsp;{{aqi.quality}}</strong></h3>
+			<hr>
+			<p>所在地区: <strong>{{aqi.area}}</strong></p>
+			<p>主要污染物: <strong>{{aqi.primary_pollutant}}</strong></p>
+			<p>颗粒物(≤2.5μm) 1小时平均: <strong>{{aqi.pm2_5}}</strong></p>
+			<p>颗粒物(≤2.5μm) 24小时平均: <strong>{{aqi.pm2_5_24h}}</strong></p>
+			<p>颗粒物(≤10μm) 1小时平均: <strong>{{aqi.pm10}}</strong></p>
+			<p>颗粒物(≤10μm) 24小时平均: <strong>{{aqi.pm10_24h}}</strong></p>
+			<p>一氧化碳1小时平均: <strong>{{aqi.co}}</strong></p>
+			<p>一氧化碳24小时平均: <strong>{{aqi.co_24h}}</strong></p>
+			<p>二氧化氮1小时平均: <strong>{{aqi.no2}}</strong></p>
+			<p>二氧化氮24小时滑动平均:<strong>{{aqi.no2_24h}}</strong></p>
+			<p>臭氧1小时平均 : <strong>{{aqi.o3}}</strong></p>
+			<p>臭氧日最大1小时平均: <strong>{{aqi.o3_24h}}</strong></p>
+			<p>臭氧8小时滑动平均: <strong>{{aqi.o3_8h}}</strong></p>
+			<p>臭氧日最大8小时滑动平均: <strong>{{aqi.o3_8h_24h}}</strong></p>
+			<p>二氧化硫1小时平均: <strong>{{aqi.so2}}</strong></p>
+			<p>二氧化硫24小时滑动平均:<strong>{{aqi.so2_24h}}</strong></p>
+			<br>
+			<p>数据时间：<strong>{{aqi.time_point}}</strong></p>
+		</alert>
+	</div>
+	<div class="text-center">
+		Thanks to <a href="http://www.pm25.in/">PM25.in</a> for sharing data.
+		<br>
+		Design by evilucifero
+	</div>
+</body>
+</html>
