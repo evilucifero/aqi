@@ -11,16 +11,36 @@
         .myft {
             font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
         }
+        .maintitle {
+        	font-size: 40px;
+        }
+        .subtitle {
+        	font-size: 14px;
+        }
+        .cloudlogo {
+        	font-size: 100px;
+        	margin-top: 10px;
+        	margin-bottom: -10px;
+        }
+        .header {
+        	background-color:#333333;
+        	color: #FFFFFF;
+        	height:250px
+        }
     </style>
 	<script src="/js/angular.min.js"></script>
 	<script src="/js/ui-bootstrap.min.js"></script>
 	<script src="/js/controller.js"></script>
 </head>
 <body class="myft">
-	<h2 class="text-center"><strong>路齐菲罗空气站</strong></h2>
-	<h5 class="text-center">我在这里呼吸着，你呢？</h5>
-	<hr>
+	<div class="header">
+		<br>
+		<p class="text-center cloudlogo"><span class="glyphicon glyphicon-cloud"></span></p>
+		<p class="text-center maintitle"><strong>路齐菲罗空气站</strong></p>
+		<p class="text-center subtitle">我在这里呼吸着，你呢？</p>
+	</div>
 	<div class="col-md-12" ng-controller="AqiCtrl">
+		<br>
 		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-search"></span>	
@@ -53,9 +73,9 @@
 		</alert>
 	</div>
 	<div class="text-center">
-		Thanks to <a href="http://www.pm25.in/">PM25.in</a> for sharing data.
+		感谢<a href="http://www.pm25.in/" target="_blank">PM25.in</a>为空气站提供数据支持
 		<br>
-		Design by evilucifero
+		evilucifero @2014
 	</div>
 </body>
 </html>
