@@ -17,6 +17,10 @@ function AqiCtrl ($scope, $http) {
 			return "";
 		}
 	};
+	$scope.switchTime = function (timeStr){
+		var d = new Date(timeStr.replace("Z","+08:00"));
+		return  d.getHours()+"点"+d.getMinutes()+"分";
+	}
 	$scope.aqis = [];
 	$http
 		.get('/get_aqi_details_hangzhou')
