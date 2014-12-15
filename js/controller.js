@@ -17,6 +17,9 @@ function AqiCtrl ($scope, $http) {
 			return "";
 		}
 	};
+	$scope.changeKeyword = function(keyword){
+		$scope.search = keyword;
+	}
 	$scope.switchTime = function (timeStr){
 		var d = new Date(timeStr.replace("Z","+08:00"));
 		return  d.getHours()+"点整";

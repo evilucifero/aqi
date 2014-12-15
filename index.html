@@ -8,6 +8,9 @@
 	<link rel="shortcut icon" href="/favicon.ico">
     <title>路齐菲罗空气站</title>
     <style>
+        a {
+            cursor: pointer;
+        }
         .myft {
             font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
         }
@@ -47,7 +50,13 @@
 			</span>
 			<input type="text" class="form-control" placeholder="请输入关键词搜索……" ng-model="search">
 		</div>
-		<br>
+        <br>&nbsp;
+        <label>试试这些？&nbsp;&nbsp;&nbsp;</label>
+        <a ng-click="changeKeyword('下沙')">下沙&nbsp;</a>
+        <a ng-click="changeKeyword('杭州')">杭州&nbsp;</a>
+        <a ng-click="changeKeyword('宁波')">宁波&nbsp;</a>
+        <a ng-click="changeKeyword('诸暨')">诸暨&nbsp;</a>
+        <br>
 		<alert ng-repeat="aqi in aqis | filter: search" type="{{aqiLevel(aqi.aqi)}}" close="closeAqi($index)">
 			<h1><strong>{{aqi.position_name}}</strong></h1>
 			<h3><strong>{{aqi.aqi}}&nbsp;{{aqi.quality}}</strong></h3>
