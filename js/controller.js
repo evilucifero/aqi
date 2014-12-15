@@ -19,7 +19,7 @@ function AqiCtrl ($scope, $http) {
 	};
 	$scope.switchTime = function (timeStr){
 		var d = new Date(timeStr.replace("Z","+08:00"));
-		return  d.getHours()+"点"+d.getMinutes()+"分";
+		return  d.getHours()+"点整";
 	}
 	$scope.aqis = [];
 	$http
