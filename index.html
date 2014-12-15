@@ -56,7 +56,7 @@
         <a ng-click="changeKeyword('杭州')">杭州&nbsp;</a>
         <a ng-click="changeKeyword('宁波')">宁波&nbsp;</a>
         <a ng-click="changeKeyword('诸暨')">诸暨&nbsp;</a>
-        <br>
+        <br><br>
 		<alert ng-repeat="aqi in aqis | filter: search" type="{{aqiLevel(aqi.aqi)}}" close="closeAqi($index)">
 			<h1><strong>{{aqi.position_name}}</strong></h1>
 			<h3><strong>{{aqi.aqi}}&nbsp;{{aqi.quality}}</strong></h3>
