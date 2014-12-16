@@ -52,10 +52,7 @@
 		</div>
         <br>&nbsp;
         <label>试试这些？&nbsp;&nbsp;&nbsp;</label>
-        <a ng-click="changeKeyword('下沙')">下沙&nbsp;</a>
-        <a ng-click="changeKeyword('杭州')">杭州&nbsp;</a>
-        <a ng-click="changeKeyword('宁波')">宁波&nbsp;</a>
-        <a ng-click="changeKeyword('诸暨')">诸暨&nbsp;</a>
+        <a ng-repeat="keyword in keywords" ng-click="changeKeyword(keyword)">{{keyword}}&nbsp;&nbsp;</a>
         <br><br>
 		<alert ng-repeat="aqi in aqis | filter: search" type="{{aqiLevel(aqi.aqi)}}" close="closeAqi($index)">
 			<h1><strong>{{aqi.position_name}}</strong></h1>

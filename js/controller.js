@@ -1,29 +1,4 @@
 function AqiCtrl ($scope, $http) {
-	$scope.aqiLevel = function (aqistr) {
-		var aqinum = parseInt(aqistr);
-		if (aqinum >= 150) {
-			return "danger";
-		}
-		else if (aqinum >= 100){
-			return "warning";
-		}
-		else if (aqinum >= 50){
-			return "info";
-		}
-		else if (aqinum > 0){
-			return "success";
-		}
-		else {
-			return "";
-		}
-	};
-	$scope.changeKeyword = function(keyword){
-		$scope.search = keyword;
-	}
-	$scope.switchTime = function (timeStr){
-		var d = new Date(timeStr.replace("Z","+08:00"));
-		return  d.getHours()+"点整";
-	}
 	$scope.aqis = [];
 	$http
 		.get('/get_aqi_details_hangzhou')
@@ -53,5 +28,27 @@ function AqiCtrl ($scope, $http) {
 	$scope.closeAqi = function (index) {
 		$scope.aqis.splice(index, 1);
 	};
+	$scope.aqiLevel = function (aqistr) {
+                var aqinum = parseInt(aqistr);
+                if (aqinum >= 150) {
+                        return "danger";
+                }
+                else if (aqinum >= 100){
+                        return "warning";
+                }
+                else if (aqinum >= 50){
+                        return "info";
+                }
+                else if (aqinum > 0){
+                        return "success";
+                }
+                else {
+                        return "";
+                }
+        };
+        $scope.changeKeyword = function(keyword){
+                $scope.search = keyword;
+        }
+	$scope.keywords = ["平均值","下沙","杭州","宁波","诸暨"];
 }
 angular.module("aqi", ["ui.bootstrap"]).controller("AqiCtrl", ["$scope", "$http", AqiCtrl]);
