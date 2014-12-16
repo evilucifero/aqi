@@ -25,6 +25,7 @@ function AqiCtrl ($scope, $http) {
 			$scope.aqis = $scope.aqis.concat(data);
 		});
 	$scope.search = '下沙';
+	$scope.keywords = ["平均值","下沙","杭州","宁波","诸暨"];
 	$scope.closeAqi = function (index) {
 		$scope.aqis.splice(index, 1);
 	};
@@ -49,6 +50,9 @@ function AqiCtrl ($scope, $http) {
         $scope.changeKeyword = function(keyword){
                 $scope.search = keyword;
         }
-	$scope.keywords = ["平均值","下沙","杭州","宁波","诸暨"];
+	$scope.switchTime = function(time){
+		var d = new Date(time.replace("Z","+08:00"));
+		return d.getHours()+"点整";
+	}
 }
 angular.module("aqi", ["ui.bootstrap"]).controller("AqiCtrl", ["$scope", "$http", AqiCtrl]);

@@ -51,8 +51,8 @@
 			<input type="text" class="form-control" placeholder="请输入关键词搜索……" ng-model="search">
 		</div>
         <br>&nbsp;
-        <label>试试这些？&nbsp;&nbsp;&nbsp;</label>
-        <a ng-repeat="keyword in keywords" ng-click="changeKeyword(keyword)">{{keyword}}&nbsp;&nbsp;</a>
+        <label>试试这些？&nbsp;&nbsp;</label>
+        <a ng-repeat="keyword in keywords" ng-click="changeKeyword(keyword)">{{keyword}}&nbsp;</a>
         <br><br>
 		<alert ng-repeat="aqi in aqis | filter: search" type="{{aqiLevel(aqi.aqi)}}" close="closeAqi($index)">
 			<h1><strong>{{aqi.position_name}}</strong></h1>
