@@ -4,7 +4,7 @@ function AqiCtrl ($scope, $http) {
 		.get('/get_aqi_details_hangzhou')
 		.success(function (data) {
 			if(data[data.length-1].position_name === null){
-				data[data.length-1].position_name = "杭州市平均值";
+				data[data.length-1].position_name = "杭州均值";
 			}
 			$scope.aqis = $scope.aqis.concat(data);
 		});
@@ -12,21 +12,13 @@ function AqiCtrl ($scope, $http) {
 		.get('/get_aqi_details_ningbo')
 		.success(function (data) {
                         if(data[data.length-1].position_name === null){
-                                data[data.length-1].position_name = "宁波市平均值";
+                                data[data.length-1].position_name = "宁波均值";
                         }
 			$scope.aqis = $scope.aqis.concat(data);
 		});
-	$http
-		.get('/get_aqi_details_zhuji')
-		.success(function (data) {
-                        if(data[data.length-1].position_name === null){
-                                data[data.length-1].position_name = "诸暨市平均值";
-                        }
-			$scope.aqis = $scope.aqis.concat(data);
-		});
-	$scope.search = '下沙';
-	$scope.keywords = ["平均值","下沙","杭州","宁波","诸暨"];
-	$scope.closeAqi = function (index) {
+	$scope.search = '西溪';
+	$scope.keywords = ["西溪","下沙","杭州","宁波","均值"];
+  $scope.closeAqi = function (index) {
 		$scope.aqis.splice(index, 1);
 	};
 	$scope.aqiLevel = function (aqistr) {
@@ -52,7 +44,7 @@ function AqiCtrl ($scope, $http) {
         }
 	$scope.switchTime = function(time){
 		var d = new Date(time.replace("Z","+08:00"));
-		return d.getHours()+"点整";
+    return d.getDate()+"日"+d.getHours()+"点整";
 	}
 }
 angular.module("aqi", ["ui.bootstrap"]).controller("AqiCtrl", ["$scope", "$http", AqiCtrl]);
